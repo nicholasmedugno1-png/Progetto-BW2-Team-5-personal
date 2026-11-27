@@ -1,0 +1,100 @@
+{
+  "users": [
+    {
+      "email": "pippo27@gmail.com",
+      "password": "$2a$10$iP0yydhggN.rvQHRXNP.meuLAxIP/5ul1HobVgbhRhE/T6IGtZQFa",
+      "userName": "pippo",
+      "id": 1
+    },
+    {
+      "email": "nicholasmedugno1@gmai.com",
+      "password": "$2a$10$roi.535OMVk/T4rtVmNrnudTuA5mkU.pROBpD/yKWevUc5.hksnb.",
+      "userName": "nick",
+      "id": 2
+    },
+    {
+      "email": "luca27@gmail.com",
+      "password": "$2a$10$/vArpiUPcOYQV2zveULG5elkwEUf/ha5fUxisB1bcv4.dC76bXrmm",
+      "userName": "luca27",
+      "id": 3
+    },
+    {
+      "email": "pippo22@gmail.com",
+      "password": "$2a$10$r6j0PJoKlQ/YUjMrHr90tOdyhHsy3GNPdTQcmXkFCJ4TlHo/23knm",
+      "userName": "pippo22",
+      "id": 4
+    },
+    {
+      "email": "luca22@gmail.com",
+      "password": "$2a$10$wWQUw5gWhLLkI14jBqOvI.NhTscU.4HAFsxQEtWXvsZblOg4fDCGS",
+      "userName": "luca22",
+      "id": 5
+    },
+    {
+      "email": "paperinho27@gmail.com",
+      "password": "$2a$10$PKJVjOcpek8GK6n01rYN9eWGyA.iaBlypMP3yjX5Sg.90xeETqgqC",
+      "userName": "paperinho",
+      "id": 6
+    },
+    {
+      "email": "fratini.matteo03@gmail.com",
+      "password": "$2a$10$o2BSNxLdJQcNPljzOfuWF.bGNyJnTRBp6rqBSdudcF1/jB.CdTVZK",
+      "userName": "Matteo Fratini ",
+      "id": 7
+    },
+    {
+      "email": "peppapork@gmail.com",
+      "password": "$2a$10$6pvd.2IHxfOEySMfAXY2sOBzXZYI66U4dZ8PTVAD.bnESsNvC9UMe",
+      "userName": "Peppa pork",
+      "id": 8
+    },
+    {
+      "email": "federicosemeraro16@gmail.com",
+      "password": "$2a$10$e5I//r0ra9k0C9.cbnwxI.RXgxJq.57MTZMRhvr6jB34ulmDprn3a",
+      "userName": "Federico semeraro",
+      "id": 9
+    },
+    {
+      "email": "pippo@gmail.com",
+      "password": "$2a$10$Z07lskNXvSDTACIofcwLpeQf.tfHbYUQk8XzwDjgvJaLksIXd6X6i",
+      "userName": "Federico Semeraro",
+      "id": 10
+    },
+    {
+      "email": "manuel@gmail.com",
+      "password": "$2a$10$COL8JqfUB3UCfKWYTp.Kye4XW7qrssfEc4A6Q/Qev.Mk/HULJwP.O",
+      "userName": "Manuel",
+      "id": 11
+    },
+    {
+      "email": "lollo27@gmail.com",
+      "password": "$2a$10$rnnkFAlDdH571l4b4WmA7.DLkVfOiiw2yUTeO19sq/w/KNbDxGxPC",
+      "userName": "lollo",
+      "id": 12
+    },
+    {
+      "email": "qweqw@sadas",
+      "password": "$2a$10$S34dZpudrJjL2ZsyXLkh.uM6PCtvi2JYYRJQYNhjOggdvmtAdDyQW",
+      "userName": "ewqeqw",
+      "id": 13
+    },
+    {
+      "email": "ciao@gmail.com",
+      "password": "$2a$10$dIa94mdwoHbVVaBxWY9pB.1XA8BLLcfPhft0IIPruu6FttWnEZq9G",
+      "userName": "Nick",
+      "id": 14
+    },
+    {
+      "email": "asdas@asdasd",
+      "password": "$2a$10$6du2Sc6idYzQi6zWEBAD7.knaYUx2GHAbBKcejXjAxdR8/BNRpQA6",
+      "userName": "dasda",
+      "id": 15
+    },
+    {
+      "email": "pippo1@gmail.com",
+      "password": "$2a$10$L4Xt8Tk5VYamK4l4HDQa8etAk2GxAeA.ykdGox5P8JMeGgmUDJ/vK",
+      "userName": "Federico Semeraro",
+      "id": 16
+    }
+  ]
+}

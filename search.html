@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EpiTunes</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,1,0"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="assets/js/search.js"></script>
+    <script type="module" src="assets/js/sidebar.js"></script>
+  </head>
+
+  <body>
+    <div class="app d-flex flex-column">
+      <div class="app-body row g-0 flex-nowrap flex-grow-1 overflow-hidden">
+        <!-- SIDEBAR -->
+        <aside
+          class="sidebar col-md-1 col-lg-2 d-none d-md-flex flex-column overflow-auto p-1 p-lg-2"
+        >
+          <a
+            href="index.html"
+            class="d-flex align-items-center justify-content-center justify-content-lg-start text-decoration-none text-white py-3 px-lg-2 mb-2"
+          >
+            <span
+              class="brand-mark d-inline-flex align-items-center justify-content-center"
+              >E</span
+            >
+            <span class="brand-name ps-1">EpiTunes</span>
+          </a>
+
+          <nav class="sidebar-nav d-flex flex-column gap-1">
+            <a href="index.html" class="side-link mb-2">
+              <span class="material-symbols-rounded">home</span
+              ><span>Home</span>
+            </a>
+            <a href="search.html" class="side-link active">
+              <span class="material-symbols-rounded">search</span
+              ><span>Cerca</span>
+            </a>
+          </nav>
+
+          <!-- BRANI PREFERITI -->
+          <p class="sidebar-section-title mt-4 mb-2">Brani preferiti</p>
+          <ul class="sidebar-list list-unstyled" id="sidebar-favs"></ul>
+
+          <!-- ALBUM PREFERITI -->
+          <p class="sidebar-section-title mt-4 mb-2">Album preferiti</p>
+          <ul class="sidebar-list list-unstyled" id="sidebar-album-favs"></ul>
+        </aside>
+
+        <main class="col overflow-auto">
+          <!-- HEADER -->
+          <header
+            class="topbar sticky-top d-flex align-items-center justify-content-between px-4"
+          >
+            <div class="topbar-nav d-flex align-items-center gap-2">
+              <button
+                class="btn-menu d-md-none"
+                id="btn-menu"
+                type="button"
+                aria-label="Apri menu"
+                aria-expanded="false"
+              >
+                <span class="material-symbols-rounded menu-hamburger"
+                  >menu</span
+                >
+              </button>
+
+              <!-- SIMBOLI MOBILE ONLY (HOME-SEARCH) -->
+              <a href="index.html" class="mobile-only btn d-md-none">
+                <span class="material-symbols-rounded">home</span>
+              </a>
+
+              <a href="search.html" class="mobile-only btn d-md-none">
+                <span class="material-symbols-rounded">search</span>
+              </a>
+            </div>
+
+            <!-- ICONA UTENTE -->
+            <div class="btn-group" role="group">
+              <button
+                type="button"
+                class="btn btn-dark dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="fa-solid fa-user"></i>
+              </button>
+              <ul class="dropdown-menu bg-dark">
+                <li>
+                  <a class="text-light dropdown-item" id="logout">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </header>
+
+          <!-- BARRA DI RICERCA -->
+          <section class="search container-fluid p-4">
+            <div class="search-box mx-auto mx-md-0 mb-4">
+              <div class="input-group">
+                <input
+                  type="search"
+                  id="search-input"
+                  class="form-control"
+                  placeholder="Cerca un brano, un album, un artista..."
+                />
+
+                <button class="btn btn-light" id="search-button" type="button">
+                  <span class="material-symbols-rounded">search</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="last-search">
+              <span class="last-search-label">
+                <i class="bi bi-clock-history"></i>
+                ULTIMA RICERCA:
+              </span>
+              <span id="lastSearch"></span>
+            </div>
+
+            <div id="search-filters" class="d-flex flex-wrap gap-2 mb-4"></div>
+
+            <!-- RISULTATI RICERCA -->
+            <div class="search-results">
+              <!-- BRANI -->
+              <section class="row mb-4 mySection" id="row-tracks" hidden>
+                <h2>Brani</h2>
+                <button class="btn search-spinner" type="button" disabled>
+                  <span
+                    class="spinner-border spinner-border-sm"
+                    aria-hidden="true"
+                  ></span>
+                  <span role="status">Loading...</span>
+                </button>
+                <div
+                  id="grid-tracks"
+                  class="grid row row-cols-2 row-cols-md-3 row-cols-xl-5 g-3"
+                ></div>
+              </section>
+
+              <!-- ALBUM -->
+              <section class="row mb-4 mySection" id="row-albums" hidden>
+                <h2>Album</h2>
+                <button class="btn search-spinner" type="button" disabled>
+                  <span
+                    class="spinner-border spinner-border-sm"
+                    aria-hidden="true"
+                  ></span>
+                  <span role="status">Loading...</span>
+                </button>
+                <div
+                  id="grid-albums"
+                  class="grid row row-cols-2 row-cols-md-3 row-cols-xl-5 g-3"
+                ></div>
+              </section>
+
+              <!-- ARTISTI -->
+              <section class="mb-4 mySection" id="row-artists" hidden>
+                <h2>Artisti</h2>
+                <button class="btn search-spinner" type="button" disabled>
+                  <span
+                    class="spinner-border spinner-border-sm"
+                    aria-hidden="true"
+                  ></span>
+                  <span role="status">Loading...</span>
+                </button>
+                <div
+                  id="grid-artists"
+                  class="grid row row-cols-2 row-cols-md-3 row-cols-xl-5 g-3"
+                ></div>
+              </section>
+
+              <!-- NESSUN RISULTATO -->
+              <div id="search-empty" class="text-center" hidden>
+                <p>Nessun risultato trovato...</p>
+                <button id="retry-search" class="btn btn-light" type="button">
+                  Riprova
+                </button>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+
+      <!-- OVERLAY SIDEBAR -->
+      <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+      <!-- PLAYER/FOOTER -->
+      <footer class="player flex-shrink-0 d-flex align-items-center">
+        <div class="row align-items-center w-100 g-0">
+          <!-- BRANO SELEZIONATO -->
+          <div
+            class="player-track col-4 col-md-4 d-flex align-items-center gap-2"
+          >
+            <div class="player-cover">
+              <img
+                src="https://placehold.co/112x112/000000/000000"
+                alt="Copertina brano"
+                class="img-fluid"
+              />
+            </div>
+
+            <div class="player-meta">
+              <p class="player-title">Seleziona un brano</p>
+              <p class="player-artist">-</p>
+            </div>
+          </div>
+
+          <!-- PLAYER CENTRALE -->
+          <div
+            class="player-center col-4 col-md-4 d-flex flex-column align-items-center"
+          >
+            <div
+              class="player-controls d-flex align-items-center justify-content-center gap-1 gap-md-3"
+            >
+              <button class="btn-ctrl" type="button">
+                <span class="material-symbols-rounded">shuffle</span>
+              </button>
+
+              <button class="btn-ctrl" type="button">
+                <span class="material-symbols-rounded">skip_previous</span>
+              </button>
+
+              <button class="btn-play" type="button">
+                <span class="material-symbols-rounded">play_arrow</span>
+              </button>
+
+              <button class="btn-ctrl" type="button">
+                <span class="material-symbols-rounded">skip_next</span>
+              </button>
+
+              <button class="btn-ctrl btn-fullscreen" type="button">
+                <span class="material-symbols-rounded">fullscreen</span>
+              </button>
+            </div>
+
+            <!-- BARRA AVANZAMENTO BRANO -->
+            <div class="player-progress d-flex align-items-center gap-2">
+              <span class="current-time">0:00</span>
+              <div class="progress-bar">
+                <div class="progress-fill"></div>
+              </div>
+              <span class="duration">0:00</span>
+            </div>
+          </div>
+
+          <!-- VOLUME -->
+          <div
+            class="player-right col-4 col-md-4 d-flex align-items-center justify-content-end pe-4"
+          >
+            <div class="dropup">
+              <button
+                class="btn-ctrl"
+                type="button"
+                data-bs-toggle="dropdown"
+                data-bs-display="static"
+                aria-expanded="false"
+              >
+                <span class="material-symbols-rounded">volume_up</span>
+              </button>
+
+              <div class="dropdown-menu">
+                <input
+                  type="range"
+                  class="form-range volume-control"
+                  min="0"
+                  max="100"
+                  value="30"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- PLAYER A SCHERMO INTERO -->
+      <div class="fullscreen-player" id="fullscreen-player">
+        <button class="btn-close-player" type="button">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+
+        <div class="fullscreen-content">
+          <div class="vinyl-disc">
+            <img
+              src="https://placehold.co/600x600"
+              alt="Copertina brano"
+              class="fullscreen-cover"
+            />
+          </div>
+
+          <div class="fullscreen-controls">
+            <button class="fullscreen-prev" type="button">
+              <span class="material-symbols-rounded">skip_previous</span>
+            </button>
+
+            <button class="fullscreen-play" type="button">
+              <span class="material-symbols-rounded">play_arrow</span>
+            </button>
+
+            <button class="fullscreen-next" type="button">
+              <span class="material-symbols-rounded">skip_next</span>
+            </button>
+          </div>
+        </div>
+
+        <h2 class="fullscreen-title"></h2>
+        <p class="fullscreen-artist">-</p>
+      </div>
+    </div>
+  </body>
+</html>
